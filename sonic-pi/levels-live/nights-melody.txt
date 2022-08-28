@@ -2,38 +2,7 @@
 
 live_loop :Nights_Melody do
   use_synth :fm
+  play_pattern_timed [:E4,:Ab4,:B4,:Db5,:B4,:Ab4], [0.25,0.25,0.25,0.25,0.50,1.25]
   sleep 0.25
-  play :E4
-  sleep 0.25
-  play :Ab4
-  sleep 0.25
-  play :B4
-  sleep 0.25
-  play :Db5
-  sleep 0.25
-  play :B4
-  sleep 0.50
-  play :Ab4
-  sleep 1.25
-  
-  
-  sleep 0.25
-  play :Ab4
-  sleep 0.25
-  play :Ab4
-  sleep 0.25
-  play :E4
-  sleep 0.25
-  play :Gb4
-  sleep 0.75
-  play :E4
-  sleep 0.25
-  play :Gb4
-  sleep 0.75
-  play :E4
-  sleep 0.25
-  play :Ab4
-  sleep 0.25
-  play :B4
-  sleep 0.75
+  play_pattern_timed [:Ab4,:Ab4,:E4,:Gb4,:E4,:Gb4,:E4,:Ab4,:B4], [0.25,0.25,0.25,0.75,0.25,0.75,0.25,0.25,0.75]
 end
