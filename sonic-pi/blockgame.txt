@@ -1,6 +1,7 @@
 # Blockgame
 
-# Coded by DJ_Dave
+# Coded by DJ_Dave (https://djdave.xyz/)
+# - annotations and changes by band (a.k.a. anderbill)
 
 use_bpm 130
 
