@@ -1,4 +1,4 @@
-notes = (ring 53, 51, 59, 56, 61, 56, 67, 60, 71, 60, 73, 60, 79, 62, 83, 64, 89, 66)
+notes = (ring 53, 51, 59, 56, 61, 56, 67, 60, 71, 60, 73, 60, 79, 62, 83, 64)
 live_loop :arp do
   use_synth :dpulse
   play notes.tick, release: 0.2
