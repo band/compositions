@@ -1,0 +1,21 @@
+# examples of 12 tone transformations (prime, inversion, retrograde, retrograde-inversion)
+#  cf. <https://en.wikipedia.org/wiki/Twelve-tone_technique>
+#
+prime = (ring :B3, :Bf3, :G3, :Cs4, :Ef4, :C4, :D4, :A3, :Ff3, :E3, :Af3, :F3)
+retrograde = (ring :F3, :Af3, :E3, :Fs3, :A3, :D4, :C4, :Ef4, :Cs4, :G3, :Bf3, :B3)
+inversion = (ring :B3, :C4, :Ef4, :A3, :G3, :Bf3, :Af3, :Cs4, :E4, :Fs4, :D4, :F4)
+retro_invert = (ring :F4, :D4, :Fs4, :E4, :Cs4, :Af3, :Bf3, :G3, :A3, :Ef4, :C4, :B3)
+live_loop :arp do
+  use_synth :dpulse
+  play prime.tick, release: 0.2
+  sleep 0.25
+  use_synth :beep
+  play retrograde.tick, release: 0.2
+  sleep 0.25
+  use_synth :fm
+  play inversion.tick, release: 0.2
+  sleep 0.25
+  use_synth :tb303
+  play retro_invert.tick, release: 0.2
+  sleep 0.25
+end
