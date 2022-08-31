@@ -1,0 +1,22 @@
+# rings of prime numbers and prime decrements
+
+notes0 = (ring 47, 45, 51, 48, 59, 54, 61, 56)
+notes1 = (ring 51, 50, 53, 50, 59, 55, 61, 54)
+notes2 = (ring 53, 51, 59, 56, 61, 57, 67, 62)
+live_loop :arp do
+  use_synth :mod_fm
+  play notes0.tick, release: 0.2
+  sleep 0.25
+  play notes1.tick, release: 0.2
+  sleep 0.25
+  play notes2.tick, release: 0.2
+  sleep 0.125
+end
+
+# add a base beat
+live_loop :foo do
+  sample :loop_garzul
+  use_synth :prophet
+  play :c3, amp: 2, release: 8, cutoff: rrand(60,120)
+  sleep 4
+end
