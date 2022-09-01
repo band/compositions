@@ -18,7 +18,7 @@ live_loop :arp do
   sleep 0.125
 end
 
-# add a base beat
+# add a base beat from the Sonic-Pi tutorial
 live_loop :foo do
   sample :loop_garzul
   use_synth :tb303
