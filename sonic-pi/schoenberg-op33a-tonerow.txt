@@ -1,0 +1,8 @@
+# Schoenberg - Piano Piece op.33a tone row
+#
+P1_A = (ring :Bf3, :F3, :C4, :B3)
+P1_B = (ring :A3, :Fs3, :Cs4, :Ds4)
+P1_C = (ring :G3, :A3, :D4, :E4)
+I6_A1 = (ring :Ds4, :Gs3, :Cs4, :D4)
+I6_B1 = (ring :E4, :G3, :C4, :Bf3)
+I6_C1 = (ring :Fs3, :F3, :B3, :A3)
