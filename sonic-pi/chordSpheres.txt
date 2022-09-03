@@ -1,0 +1,30 @@
+# cf. "Spheres" https://gist.github.com/darinwilson/137764d4b06072de626c?permalink_comment_id=3945132#gistcomment-3945132
+# coded by Pit Noack http://www.maschinennah.de/
+
+chord_1 = chord :c4, :maj9, num_octaves: 2
+chord_2 = chord :es4, :maj9, num_octaves: 2
+chord_3 = chord :b3, :maj9, num_octaves: 2
+chord_4 = chord :d4, :maj9, num_octaves: 2
+
+chord_low_1 = chord :c2, :maj9
+chord_low_2 = chord :es2, :maj9
+chord_low_3 = chord :b1, :maj9
+chord_low_4 = chord :d2, :maj9
+
+chord_high = (knit(chord_1, 2, chord_2, 2, chord_3, 4,chord_4, 4))
+chord_low = (knit(chord_low_1, 2, chord_low_2, 2, chord_low_3, 4, chord_low_4, 4))
+
+define :chord_player do |the_chord|
+  use_synth :blade
+  the_chord.each do |note|
+    play note, attack: rand(4), release: rand(6..8), cutoff: rand(50..85), vibrato_rate: rand(0.01..2), amp: 0.55
+  end
+end
+
+with_fx :reverb, room: 0.99, mix: 0.7 do
+  live_loop :chord_loop do
+    chord_player chord_high.pick(6)
+    chord_player chord_low.take(3)
+    sleep 8
+  end
+end
