@@ -1,0 +1,41 @@
+# Sonic-Pi distortion
+# cf. <https://jamcultur.bandcamp.com/track/sonic-pi-distortion>
+
+with_fx :ixi_techno, cutoff_min: 125, cutoff_max: 70, mix: 0.75, phase: 8, res: 0.5 do
+  with_fx :ixi_techno, cutoff_min: 125, cutoff_max: 70, mix: 0.75, phase: 16, res: 0.5 do
+    live_loop :calmchords do
+      use_synth :sine
+      play chord(:F3, :major7), attack: 0.25, sustain: 1, release: 0.75
+      sleep 2
+      play chord(:C3, :major7), attack: 0.25, sustain: 1, release: 0.75
+      sleep 2
+      play chord(:G3, :minor7), attack: 0.25, sustain: 1, release: 0.75
+      sleep 2
+      play chord(:A3, :major), attack: 0.25, sustain: 1, release: 0.75
+      sleep 2
+    end
+    with_fx :level, amp: 0.125 do
+      live_loop :accompanynotes do
+        use_synth :hoover
+        8. times do
+          play 89, amp: 0.05
+          sleep 0.25
+        end
+        8. times do
+          play 84, amp: 0.05
+          sleep 0.25
+        end
+        8. times do
+          play 91, amp: 0.05
+          sleep 0.25
+        end
+        4. times do
+          play 93, amp: 0.05
+          sleep 0.5
+        end
+      end
+    end
+  end
+end
+
+

@@ -1,5 +1,5 @@
 # cf. "Spheres" https://gist.github.com/darinwilson/137764d4b06072de626c?permalink_comment_id=3945132#gistcomment-3945132
-# coded by Pit Noack http://www.maschinennah.de/
+# coded by Pit Noack https://www.maschinennah.de/
 
 chord_1 = chord :c4, :maj9, num_octaves: 2
 chord_2 = chord :es4, :maj9, num_octaves: 2
