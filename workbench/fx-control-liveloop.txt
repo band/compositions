@@ -1,0 +1,72 @@
+# 220904 2249 Learning how to control fx effect from inside a live_loop with control
+# YT <https://youtu.be/iInSVo0JlTY>
+
+# https://in-thread.sonic-pi.net/t/what-are-your-favorite-fx-combo-in-sonic-pi/7043/3
+
+# "7.2 - Controlling FX"
+# https://sonic-pi.net/tutorial.html#section-7-2
+
+use_bpm 120
+
+live_loop :time, delay: 0.01 do
+  sleep 1
+end
+
+
+with_fx :level, amp: 4 do
+  
+  with_fx :distortion do |dist|
+    with_fx :flanger do |flan|
+      with_fx :bitcrusher do |bitc|
+        with_fx :reverb do |reve|
+          
+          live_loop :synth1, sync: :time do
+            #stop
+            use_synth :saw
+            tick
+            
+            #Song structure
+            PartA = 32
+            PartB = 16
+            
+            play knit(:c2,PartA, :cs2,PartB, :c2,PartB).look,
+              release: 0.25 if spread(7,16).look
+            sleep 0.25
+            
+            ### fx mixer ###
+            
+            ## distortion
+            puts d = range(0,1, step: 0.025).mirror.look
+            control dist, distort: d  
+            
+            ## flanger feedback
+            puts d = rrand(0.1,0.7)   
+            control flan, feedback: d
+            
+            ## bitcrusher
+            puts    d = knit(0.1,16, 1,2).look
+            control bitc, bits: d
+            
+            ## controlling reverb
+            puts d = knit(0,32, 0.8,4).look
+            control reve, room: d
+            # starting with 0 room and mixing room in later,
+            # so it doesnt get to messy
+            control reve, mix: knit(0,32, 0.3, 16).look
+            
+          end
+          
+        end #end :reverb
+      end #end :flanger
+    end #end :distotion
+  end #end :bitcrusher
+  
+  live_loop :kick do
+    9.times do
+      sample :bd_haus, cutoff: 85
+      sleep 1
+    end
+    sleep 1*7
+  end
+  
+end #end :level
